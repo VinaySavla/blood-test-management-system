@@ -110,7 +110,7 @@ while($row=mysqli_fetch_array($query)){
                                              <td><?php echo $row['RegDate'];?></td>
                                             <td>
 
-                                <a href="edit-phlebotomist.php?pid=<?php echo $row['id'];?>"><i class="fas fa-edit" style="color:blue"></i></a> |
+                                <!-- <a href="edit-phlebotomist.php?pid=<?php echo $row['id'];?>"><i class="fas fa-edit" style="color:blue"></i></a> | -->
 
                                 <a href="manage-phlebotomist.php?pid=<?php echo $row['id'];?>&&action=delete" onclick="return confirm('Do you really want to delete this record?');"><i class="fa fa-trash" aria-hidden="true" style="color:red" title="Delete this record"></i></a></td>
                                         </tr>

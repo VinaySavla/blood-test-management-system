@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql.menrvasolutions.com
--- Generation Time: Jul 21, 2023 at 06:58 AM
--- Server version: 8.0.28-0ubuntu0.20.04.3
--- PHP Version: 7.4.3-4ubuntu2.19
+-- Host: 127.0.0.1
+-- Generation Time: Oct 05, 2023 at 09:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbladmin` (
-  `ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
   `AdminName` varchar(120) DEFAULT NULL,
   `AdminuserName` varchar(20) NOT NULL,
-  `MobileNumber` int NOT NULL,
+  `MobileNumber` int(11) NOT NULL,
   `Email` varchar(120) NOT NULL,
   `Password` varchar(120) DEFAULT NULL,
-  `AdminRegdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `AdminRegdate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbladmin`
@@ -51,16 +51,16 @@ INSERT INTO `tbladmin` (`ID`, `AdminName`, `AdminuserName`, `MobileNumber`, `Ema
 --
 
 CREATE TABLE `tblpatients` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `FullName` varchar(120) DEFAULT NULL,
-  `MobileNumber` bigint DEFAULT NULL,
+  `MobileNumber` bigint(20) DEFAULT NULL,
   `DateOfBirth` date DEFAULT NULL,
   `GovtIssuedId` varchar(150) DEFAULT NULL,
   `GovtIssuedIdNo` varchar(150) DEFAULT NULL,
   `FullAddress` varchar(255) DEFAULT NULL,
   `State` varchar(200) DEFAULT NULL,
-  `RegistrationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `RegistrationDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblpatients`
@@ -68,10 +68,10 @@ CREATE TABLE `tblpatients` (
 
 INSERT INTO `tblpatients` (`id`, `FullName`, `MobileNumber`, `DateOfBirth`, `GovtIssuedId`, `GovtIssuedIdNo`, `FullAddress`, `State`, `RegistrationDate`) VALUES
 (1, 'Vinay Savla', 9979583723, '2002-09-27', 'PAN', 'NESPS7463N', '32/12, XYZ Society, ABC Road, Wadala West - 400031', 'GUJARAT', '2022-05-05 17:58:49'),
-(2, 'Faizan Akhai', 9782302842, '2003-09-29', 'Aadhar', '987998799889', 'Room Number X, Y Building, Z road, Thane ', 'MAHARASHTRA', '2022-12-17 08:00:02'),
-(3, 'Amey Sawant', 8645974351, '1960-02-29', 'Aadhar', '742364873648', 'ashdgbahjsdghjw', 'ARUNACHAL PRADESH', '2022-12-17 10:24:03'),
-(4, 'Khushboo Rathod', 9876543219, '2004-04-13', 'Aadhar Card', '987412367895 ', 'Ghatkopar', 'MAHARASHTRA ', '2022-12-17 10:24:09'),
-(5, 'Dashrath Bhagwan kale', 8976637811, '1986-11-10', 'mh 14 dd 1434', '12345678', 'sai-shradha so.,Prem nagar ,tunga village powai,', 'MAHARASTRA', '2023-03-25 05:51:20');
+(2, 'Soham Pansare', 9782302842, '2003-09-29', 'Aadhar', '987998799889', 'Room Number X, Y Building, Z road, Thane ', 'MAHARASHTRA', '2022-12-17 08:00:02'),
+(3, 'Satshil', 8645974351, '1960-02-29', 'Aadhar', '742364873648', 'ashdgbahjsdghjw', 'ARUNACHAL PRADESH', '2022-12-17 10:24:03'),
+(4, 'ABC', 9876543219, '2004-04-13', 'Aadhar Card', '987412367895 ', 'Ghatkopar', 'MAHARASHTRA ', '2022-12-17 10:24:09'),
+(5, 'XYZ', 8976637811, '1986-11-10', 'mh 14 dd 1434', '12345678', 'sai-shradha so.,Prem nagar ,tunga village powai,', 'MAHARASTRA', '2023-03-25 05:51:20');
 
 -- --------------------------------------------------------
 
@@ -80,20 +80,20 @@ INSERT INTO `tblpatients` (`id`, `FullName`, `MobileNumber`, `DateOfBirth`, `Gov
 --
 
 CREATE TABLE `tblphlebotomist` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `EmpID` varchar(100) DEFAULT NULL,
   `FullName` varchar(120) DEFAULT NULL,
-  `MobileNumber` bigint DEFAULT NULL,
-  `RegDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `MobileNumber` bigint(20) DEFAULT NULL,
+  `RegDate` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblphlebotomist`
 --
 
 INSERT INTO `tblphlebotomist` (`id`, `EmpID`, `FullName`, `MobileNumber`, `RegDate`) VALUES
-(4, 'SE464', 'Khushboo Rathod', 9782302842, '2022-12-17 08:01:25'),
-(5, 'SE466', 'Amey Sawant', 7423790098, '2022-12-17 08:01:58');
+(6, '1', 'Soham Pansare', 9988776655, '2023-10-05 06:53:52'),
+(7, '2', 'Satshil', 4455667788, '2023-10-05 06:54:03');
 
 -- --------------------------------------------------------
 
@@ -102,13 +102,13 @@ INSERT INTO `tblphlebotomist` (`id`, `EmpID`, `FullName`, `MobileNumber`, `RegDa
 --
 
 CREATE TABLE `tblreporttracking` (
-  `id` int NOT NULL,
-  `OrderNumber` bigint DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `OrderNumber` bigint(20) DEFAULT NULL,
   `Remark` varchar(255) DEFAULT NULL,
   `Status` varchar(120) DEFAULT NULL,
-  `PostingTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `RemarkBy` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `PostingTime` timestamp NULL DEFAULT current_timestamp(),
+  `RemarkBy` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblreporttracking`
@@ -129,36 +129,36 @@ INSERT INTO `tblreporttracking` (`id`, `OrderNumber`, `Remark`, `Status`, `Posti
 --
 
 CREATE TABLE `tbltestrecord` (
-  `id` int NOT NULL,
-  `OrderNumber` bigint DEFAULT NULL,
-  `PatientMobileNumber` bigint DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `OrderNumber` bigint(20) DEFAULT NULL,
+  `PatientMobileNumber` bigint(20) DEFAULT NULL,
   `TestType` varchar(100) DEFAULT NULL,
   `TestTimeSlot` varchar(120) DEFAULT NULL,
   `ReportStatus` varchar(100) DEFAULT NULL,
   `FinalReport` varchar(150) DEFAULT NULL,
   `ReportUploadTime` varchar(200) DEFAULT NULL,
-  `RegistrationDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `RegistrationDate` timestamp NULL DEFAULT current_timestamp(),
   `AssignedtoEmpId` varchar(150) DEFAULT NULL,
   `AssigntoName` varchar(180) DEFAULT NULL,
   `AssignedTime` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbltestrecord`
 --
 
 INSERT INTO `tbltestrecord` (`id`, `OrderNumber`, `PatientMobileNumber`, `TestType`, `TestTimeSlot`, `ReportStatus`, `FinalReport`, `ReportUploadTime`, `RegistrationDate`, `AssignedtoEmpId`, `AssigntoName`, `AssignedTime`) VALUES
-(1, 678944493, 9979583723, 'CBC', '2022-05-06T14:30', 'Delivered', '55b079e0a85dfd77fb25f1c10acc6a931671692730.pdf', '22-12-2022 12:35:30 PM', '2022-05-05 17:58:49', 'SE464', 'Khushboo Rathod', '05-05-2022 11:30:20 PM'),
-(2, 668369933, 9782302842, 'LipidPanel', '2022-12-18T14:30', 'Delivered', '7ded0fc886ed399535462e8267d3f20f1671280656.pdf', '17-12-2022 06:07:36 PM', '2022-12-17 08:00:02', 'SE466', 'Amey Sawant', '17-12-2022 01:34:21 PM'),
-(3, 898921496, 8645974351, 'CBC', '2022-12-17T15:53', 'Sent to Lab', NULL, NULL, '2022-12-17 10:24:03', 'SE464', 'Khushboo Rathod', '18-12-2022 05:49:30 PM'),
-(4, 309227996, 9876543219, 'CBC', '2022-12-18T18:00', 'Sample Collected', NULL, NULL, '2022-12-17 10:24:09', 'SE466', 'Amey Sawant', '17-12-2022 06:05:01 PM'),
-(5, 100120773, 9979583723, 'PCR', '2022-12-18T18:00', 'Assigned', NULL, NULL, '2022-12-18 12:21:57', 'SE464', 'Khushboo Rathod', '18-12-2022 05:52:34 PM'),
+(1, 678944493, 9979583723, 'CBC', '2022-05-06T14:30', 'Delivered', '55b079e0a85dfd77fb25f1c10acc6a931671692730.pdf', '22-12-2022 12:35:30 PM', '2022-05-05 17:58:49', '1', 'Soham Pansare', '05-05-2022 11:30:20 PM'),
+(2, 668369933, 9782302842, 'LipidPanel', '2022-12-18T14:30', 'Delivered', '7ded0fc886ed399535462e8267d3f20f1671280656.pdf', '17-12-2022 06:07:36 PM', '2022-12-17 08:00:02', '2', 'Satshil', '17-12-2022 01:34:21 PM'),
+(3, 898921496, 8645974351, 'CBC', '2022-12-17T15:53', 'Sent to Lab', NULL, NULL, '2022-12-17 10:24:03', '1', 'Soham Pansare', '18-12-2022 05:49:30 PM'),
+(4, 309227996, 9876543219, 'CBC', '2022-12-18T18:00', 'Sample Collected', NULL, NULL, '2022-12-17 10:24:09', '2', 'Satshil', '17-12-2022 06:05:01 PM'),
+(5, 100120773, 9979583723, 'PCR', '2022-12-18T18:00', 'Assigned', NULL, NULL, '2022-12-18 12:21:57', '1', 'Soham Pansare', '18-12-2022 05:52:34 PM'),
 (6, 826952157, 9876543219, 'LipidPanel', '2022-12-19T12:20', NULL, NULL, NULL, '2022-12-18 12:23:38', NULL, NULL, NULL),
 (7, 657345243, 9979583723, 'CBC', '2022-12-22T16:00', NULL, NULL, NULL, '2022-12-22 07:01:38', NULL, NULL, NULL),
 (8, 677592057, 9979583723, 'PCR', '2022-12-22T16:30', NULL, NULL, NULL, '2022-12-22 07:03:00', NULL, NULL, NULL),
 (9, 265274036, 9782302842, 'CBC', '2023-01-02T10:00', NULL, NULL, NULL, '2023-01-01 13:34:58', NULL, NULL, NULL),
 (10, 923064673, 9979583723, 'CBC', '2023-03-02T19:52', NULL, NULL, NULL, '2023-03-10 14:22:42', NULL, NULL, NULL),
-(11, 498601376, 8976637811, 'PCR', '2023-03-25T15:24', 'Assigned', NULL, NULL, '2023-03-25 05:51:20', 'SE466', 'Amey Sawant', '25-03-2023 11:23:58 AM');
+(11, 498601376, 8976637811, 'PCR', '2023-03-25T15:24', 'Assigned', NULL, NULL, '2023-03-25 05:51:20', '2', 'Satshil', '25-03-2023 11:23:58 AM');
 
 --
 -- Indexes for dumped tables
@@ -202,31 +202,31 @@ ALTER TABLE `tbltestrecord`
 -- AUTO_INCREMENT for table `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpatients`
 --
 ALTER TABLE `tblpatients`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblphlebotomist`
 --
 ALTER TABLE `tblphlebotomist`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tblreporttracking`
 --
 ALTER TABLE `tblreporttracking`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbltestrecord`
 --
 ALTER TABLE `tbltestrecord`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
